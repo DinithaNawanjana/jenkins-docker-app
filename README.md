@@ -1,1 +1,1 @@
-# jenkins-demo-app
+# jenkins-docker-app
