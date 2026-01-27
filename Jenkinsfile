@@ -7,15 +7,21 @@ pipeline {
                 echo 'Getting code from GitHub...'
             }
         }
-        stage ('Test Application'){
+        stage ('Build Docker Image'){
             steps{
                 echo 'Testing python code'
-                sh 'python3 main.py'
+                sh 'docker build -t jenkins-docker-app .'
+            }
+        }
+        stage ('Test Docker Container'){
+            steps{
+                echo 'Testing Docker Container'
+                sh 'docker run -d --name jenkins-docker-app jenkins-docker-app'
             }
         }
         stage ('Finish'){
             steps{
-                echo 'Pipelne completed Successfully....'
+                echo 'Pipeline completed Successfully....'
             }
         }
 
