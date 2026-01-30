@@ -6,6 +6,8 @@ pipeline {
         DOCKER_CREDS = credentials('docker-hub-login')
         
         REGISTRY_USER = 'dinitha282' 
+
+        TAG_NAME= v2
     }
     
     stages {
@@ -18,14 +20,14 @@ pipeline {
         stage('Build Image') {
             steps {
                 
-                sh "docker build -t ${REGISTRY_USER}/my-python-app:v1 ."
+                sh "docker build ${REGITRY_USER}/my-python-app:v1 ."
             }
         }
         
         stage('Login to Docker Hub') {
             steps {
                 
-                sh "echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin"
+                sh 'echo ${DOCKER_CREDS_PSW} | docker login -u ${DOCKER_CREDS_USR} --password-stdin'
             }
         }
         
