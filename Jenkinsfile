@@ -18,7 +18,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 
-                sh "docker build ${REGISTRY_USER}/my-python-app:v1 ."
+                sh "docker build -t ${REGISTRY_USER}/my-python-app:v1 ."
             }
         }
         
