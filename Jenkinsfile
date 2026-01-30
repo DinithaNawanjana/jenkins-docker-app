@@ -5,9 +5,7 @@ pipeline {
         
         DOCKER_CREDS = credentials('docker-hub-login')
         
-        REGISTRY_USER = 'dinitha282' 
-
-        TAG_NAME= v2
+        REGISTRY_USER = 'dinitha282'
     }
     
     stages {
