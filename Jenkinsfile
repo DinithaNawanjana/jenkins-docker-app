@@ -42,5 +42,16 @@ pipeline {
                 sh "docker rmi ${REGISTRY_USER}/my-python-app:v1"
             }
         }
+
+        stage('Pulll Image') {
+            steps {
+                echo 'Pulling image to Docker Hub...'
+                sh "docker pull ${REGISTRY_USER}/my-python-app:v1"
+
+                echo 'Image Running'
+                sh "docker run -d --name my-python-app ${REGISTRY_USER}/my-python-app:v1"
+                echo 'Application run successfully.....'
+            }
+        }
     }
 }
